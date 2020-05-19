@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>餐厅信息</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap-css -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!--// bootstrap-css -->
+<!-- css -->
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+<!--// css -->
+<link rel="stylesheet" href="css/lightbox.css">
+<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all">
+<link href="css/owl.theme.css" rel="stylesheet">
+<!-- font-awesome icons -->
+<link href="css/font-awesome.css" rel="stylesheet">
+<!-- //font-awesome icons -->
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<script>
+$(document).ready(function() {
+	$("#owl-demo").owlCarousel({
+
+		autoPlay: 3000, //Set AutoPlay to 3 seconds
+		autoPlay:true,
+		items : 4,
+		itemsDesktop : [640,5],
+		itemsDesktopSmall : [414,4]
+
+	});
+
+});
+</script>
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<![endif]-->
+</head>
+<body>
+	<!-- banner -->
+	<div class="banner jarallax">
+			<div class="w3layouts-header-top">
+				<div class="container">
+					<div class="w3-header-top-grids">
+						<div class="w3-header-top-left">
+							<p>欢迎来到牛牛订餐平台!</p>
+						</div>
+						<div class="w3-header-top-right">
+							<div class="agileinfo-social-grids">
+								<ul>
+									<li><a href="login.html">食客登录</a></li>
+									<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+									<li><a href="shopLogin.html">老板登录</a></li>									 
+								</ul>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div>
+
+				<div class="header-top">
+					<div class="container">
+						<div class="header-top-info">
+							<nav class="navbar navbar-default">
+								<!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header">
+									<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+								</div>
+
+								<!-- Collect the nav links, forms, and other content for toggling -->
+								<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+									<nav>
+										<ul class="nav navbar-nav">
+											<li><a href="orderListShop.html">餐厅订单列表</a></li>
+											<li class="active"><a href="shopEdit.html" class="scroll">修改餐厅信息</a></li>
+										</ul>
+									</nav>
+								</div>
+								<!-- /.navbar-collapse -->
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+	<!-- //testimonial -->
+	<!-- contact -->
+	<div class="contact" id="mail">
+		<div class="container">
+			<div class="w3-welcome-heading">
+				<h3>修改餐厅信息</h3>
+			</div>
+			<div class="agile-contact-grids">
+				<form method="post" enctype="multipart/form-data" action="ShopEdit" class="col-md-12 ali">
+
+					<div class="contact-form">
+
+						<div class="shopres ">
+						<input name="id" id="id" type="hidden" value="">
+							<div class="styled-input agile-styled-input-top">
+								<input name="phone" id="phone" type="text"  required="" maxlength="30">
+								<label>联系电话</label>
+								<span></span>
+							</div>
+							<div class="styled-input">
+								<input name="password" id="password" type="text"  required="" maxlength="30">
+								<label>密码</label>
+								<span></span>
+							</div>
+
+							<div class="styled-input">
+								<input name="shopName" id="shopName" type="text"  required="" maxlength="30">
+								<label>餐厅名称</label>
+								<span></span>
+							</div>
+
+
+							<div class="styled-input">
+								<input name="opentime" id="opentime" type="text"  required="" maxlength="100">
+								<label>营业时间</label>
+								<span></span>
+							</div>
+
+							<div class="styled-input">
+								<input name="room1" id="room1" type="text"  required="" maxlength="5" oninput="value=value.replace(/[^\d]/g,'')">
+								<label>小桌数量</label>
+								<span></span>
+							</div>
+
+							<div class="styled-input">
+								<input name="room2" id="room2" type="text"  required="" maxlength="5" oninput="value=value.replace(/[^\d]/g,'')">
+								<label>大桌数量</label>
+								<span></span>
+							</div>
+							<div class="styled-input">
+								<input name="room3" id="room3" type="text"  required="" maxlength="5" oninput="value=value.replace(/[^\d]/g,'')">
+								<label>单间数量</label>
+								<span></span>
+							</div>
+
+							<div class="styled-input">
+								<textarea name="intro" id="intro"  required="" maxlength="200"></textarea>
+								<label>餐厅简介</label>
+								<span></span>
+							</div>
+							<div class="styled-input">
+								<textarea name="address" id="address" required="" maxlength="100"></textarea>
+								<label>地址</label>
+								<span></span>
+							</div>
+
+
+	  					 <div class="styled-input">
+						<input  style="display:none;" type="file" onchange="changImg(event)" id="imagechoose" name="pictureFile" />
+				         <!-- Image -->
+						<img id="imgcanting" onclick="ChooseImage()" height="200px" width="200px" src="images/addpic1.png" />
+						</div>
+
+							<input onclick="register()" type="submit" value="保存修改">
+							<input type="button" onclick="history.go(-1)" value="不修改了">
+						</div>
+					</div>
+				</form>
+				<div class="col-md-6 agile-contact-right">
+
+
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+
+	<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="w3-agile-social-grids">
+				<h4>牛牛订餐平台</h4>
+				<div class="border"></div>		
+			</div>
+			<div class="copyright">
+				<p>Copyright &copy; 2019. Niuniu ordering platform
+			</div>
+		</div>
+	</div>
+	<!-- //footer -->
+	<script src="js/jarallax.js"></script>
+ 
+	<script type="text/javascript">
+		/* init Jarallax */
+		$('.jarallax').jarallax({
+			speed: 0.5,
+			imgWidth: 1366,
+			imgHeight: 768
+		})
+	</script>
+	<script src="js/responsiveslides.min.js"></script>
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+window.onload= function()
+{
+	var shopId = localStorage.getItem('shopid');
+	$.ajax({
+		type : "post",
+		url : "/Food/GetShopById",
+		dataType : "json",
+		data :{shopId:shopId},
+		success : function(data){
+			debugger
+			$("#shopName").val(data.shopName);
+			$("#password").val(data.password);
+			$("#address").val(data.address);
+			$("#room1").val(data.room1);
+			$("#room2").val(data.room2);
+			$("#room3").val(data.room3);
+			$("#phone").val(data.phone);
+			$("#intro").val(data.intro);
+			$("#opentime").val(data.opentime);
+			$("#imgcanting").attr('src',data.image);
+			$("#id").val(data.id);
+		},
+		error : function(data) {// eslint-disable-line no-unused-vars
+		}
+		});
+
+	}
+
+		//图片回显
+		function changImg(e){ 
+			            for (var i = 0; i < e.target.files.length; i++) {
+			                var file = e.target.files.item(i);
+			                //验证是否为图片，不是就跳出循环
+			                if (!(/^image\/.*$/i.test(file.type))) {
+			                    alert("不是图片！请重新选择。")
+			                    continue; 
+			                }
+			                //实例化FileReader API  
+			                var freader = new FileReader();  
+			                freader.readAsDataURL(file);  
+			                freader.onload = function(e) {  
+			                    $("#imgcanting").attr("src",e.target.result);  //显示图片
+			                }  
+			            }  
+			        }  
+			//点击选择图片按钮
+			function ChooseImage()
+			{
+			$("#imagechoose").click();
+			}
+
+	</script>
+	<!-- //here ends scrolling icon -->
+	<!-- Tabs-JavaScript -->
+	<script src="js/owl.carousel.js"></script>
+</body>
+</html>

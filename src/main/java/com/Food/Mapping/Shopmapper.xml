@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Food.Dao.Shopmapper">
+
+	<insert id="AddShop" parameterType="com.Food.Entity.Shop">
+	INSERT INTO shop(id,phone,password,shopName,image,intro,address,opentime,room1,room2,room3)
+	 VALUES(#{id},#{phone},#{password},#{shopName},#{image},#{intro},#{address},#{opentime},#{room1},#{room2},#{room3})
+	</insert>
+
+	<select id="GetAllShop" resultType="com.Food.Entity.Shop">
+		select * from shop
+	</select>
+
+	<select id="GetShopById" resultType="com.Food.Entity.Shop">
+		select * from shop where id=#{shopId}
+	</select>
+
+	<update id="ShopEdit" parameterType="com.Food.Entity.Shop">
+		UPDATE shop
+		SET phone = #{phone},password=#{password},shopName=#{shopName},image=#{image},intro=#{intro},address=#{address},opentime=#{opentime},room1=#{room1},room2=#{room2},room3=#{room3}
+		WHERE
+		id = #{id}
+	</update>
+
+	<select id="ShopLogin" resultType="com.Food.Entity.Shop">
+			select * from shop where phone= #{0} and password= #{1}
+	</select>
+
+	<delete id="DeleteShop" parameterType="java.lang.String">
+		DELETE FROM shop WHERE id=#{shopId}
+	</delete>
+	
+	<!-- resultType 表示的是bean中的对象类，此时可以省略掉resultMap标签的映射，
+	但是必须保证查询结果集中的属性 和 bean对象类中的属性是一一对应的，此时大小写不敏感，但是有限制。 -->
+	<!-- 一般使用parameterType直接将查询结果列值类型自动对应到java对象属性类型上，不再配置映射关系一一对应 -->
+</mapper>

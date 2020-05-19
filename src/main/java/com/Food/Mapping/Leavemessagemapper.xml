@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Food.Dao.Leavemessagemapper">
+<insert id="AddLeavemessage" parameterType="com.Food.Entity.Leavemessage">
+	INSERT INTO leavemessage(id,user_id,content,shop_id,createtime)
+	 VALUES(#{id},#{user_id},#{content},#{shop_id},#{createtime})
+	</insert>
+	<select id="GetLeavemessageByShopId" resultType="com.Food.Entity.Leavemessage">
+	SELECT
+		leavemessage.*,
+		USER.phone userPhone
+	FROM
+		leavemessage
+		LEFT JOIN USER ON leavemessage.user_id = USER.id
+	WHERE
+		leavemessage.shop_id=#{shopId}
+		ORDER BY leavemessage.createtime DESC
+	</select>
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Food.Dao.Ordermapper">
+<insert id="AddOrder" parameterType="com.Food.Entity.Shoporder">
+	INSERT INTO shoporder (user_id,id,shop_id,pnum,phone,ordertime,order_money,roomtype)
+	 VALUES(#{userId},#{id},#{shopId},#{pnum},#{phone},#{ordertime},#{orderMoney},#{roomtype})
+	</insert>
+
+	<select id="GetOrderByUser" resultType="com.Food.Entity.Shoporder">
+		SELECT
+			a.id,
+			a.user_id ,
+			a.shop_id ,
+			a.pnum,
+			a.phone,
+			a.ordertime,
+			a.order_money,
+			a.roomtype,
+			b.phone userPhone,
+			c.shopName shopName
+		FROM
+			shoporder a
+			LEFT JOIN USER b ON a.user_id = b.id
+			LEFT JOIN shop c ON a.shop_id = c.id
+		WHERE
+			a.user_id= #{userId}
+	</select>
+
+	<delete id="DelOrder" parameterType="java.lang.String">
+		DELETE FROM shoporder WHERE id=#{orderId}
+	</delete>
+
+	<select id="GetOrderByShop" resultType="com.Food.Entity.Shoporder">
+		SELECT
+	shoporder.*,
+	USER.phone userPhone,
+	shop.shopName shopName
+FROM
+	shoporder
+	LEFT JOIN USER ON shoporder.user_id = USER.id
+	LEFT JOIN shop ON shoporder.shop_id = shop.id
+WHERE
+	shoporder.shop_id = #{shopId}
+	</select>
+
+	<select id="GetOrderById" resultType="com.Food.Entity.Shoporder">
+		SELECT * from shoporder where id =#{orderId}
+	</select>
+
+
+</mapper>

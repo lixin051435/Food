@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>牛牛订餐平台</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords" content="" />
+<!-- DOM addEventListener。页面加载时添加一个定时器，0秒后执行hideURLbar，函数将页面滚动至坐标（0，1）-->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap-css -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!--// bootstrap-css -->
+<!-- css -->
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+<!--// css -->
+<link rel="stylesheet" href="css/lightbox.css">
+<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all">
+<link href="css/owl.theme.css" rel="stylesheet">
+<!-- font-awesome icons -->
+<link href="css/font-awesome.css" rel="stylesheet">
+<!-- //font-awesome icons -->
+<!-- font -->
+<link href="http://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<!-- //font -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<script>
+$(document).ready(function() {
+	$("#owl-demo").owlCarousel({
+
+		autoPlay: 3000, //Set AutoPlay to 3 seconds
+		autoPlay:true,
+		items : 4,
+		itemsDesktop : [640,5],
+		itemsDesktopSmall : [414,4]
+
+	});
+
+});
+</script>
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<![endif]-->
+</head>
+<body>
+	<!-- banner -->
+	<div class="banner jarallax">
+			<div class="w3layouts-header-top">
+				<div class="container">
+					<div class="w3-header-top-grids">
+						<div class="w3-header-top-left">
+							<p>欢迎来到牛牛订餐平台!</p>
+						</div>
+						<div class="w3-header-top-right">
+							<div class="agileinfo-social-grids">
+								<ul>
+									<li><a href="login.html">食客登录</a></li>
+									<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+									<li><a href="shopLogin.html">老板登录</a></li>
+								</ul>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div>
+
+				<div class="header-top">
+					<div class="container">
+						<div class="header-top-info">
+							<nav class="navbar navbar-default">
+
+								<!-- Collect the nav links, forms, and other content for toggling -->
+								<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+									<nav>
+										<ul class="nav navbar-nav">
+											<li ><a href="index.html">网站首页</a></li>
+											<li class="active"><a href="shopList.html" class="scroll">餐厅列表</a></li>
+											<li><a href="recommendList.html" >网友推荐</a></li>											
+											<li><a href="register.html" >注册会员</a></li>										
+											<li><a href="shopRegister.html">注册餐厅</a></li>
+											<li><a href="logina.html">管理员入口</a></li>
+										</ul>
+									</nav>
+								</div>
+								<!-- /.navbar-collapse -->
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	<!-- //banner -->
+
+	<div class="news" id="news">
+		<div class="container">
+			<div class="w3-welcome-heading">
+				<h3>餐厅列表</h3>
+			</div>
+			<div class="agile-news-grids">
+				<div id="shoplist" class="agile-news-grid">
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="w3-agile-social-grids">
+				<h4>牛牛订餐平台</h4>
+				<div class="border"></div>				
+			</div>
+			<div class="copyright">
+				<p>Copyright &copy; 2019. Niuniu ordering platform
+			</div>
+		</div>
+	</div>
+	<!-- //footer -->
+	<script src="js/jarallax.js"></script>
+ 
+	<script type="text/javascript">
+		/* init Jarallax */
+		$('.jarallax').jarallax({
+			speed: 0.5,
+			imgWidth: 1366,
+			imgHeight: 768
+		})
+	</script>
+	<script src="js/responsiveslides.min.js"></script>
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+	 window.onload=function()
+	 {
+		 $.ajax({
+				type : "post",
+				url : "/Food/GetAllShop",
+				dataType : "json",
+				data :{},
+				success : function(data){
+					for(var i=0;i<data.length;i++)
+						{
+						var html='';
+					    html+=' <div onclick=ShopDetail("'+data[i].id+'") style="margin-bottom: 20px;" class="col-md-6 agile-news-left">';
+					    html+='<div class="col-md-6 news-left-img news-left-img2">';
+					    html+='<img style="width: 301px;height: 200px;    margin-left: -43px;" src="'+data[i].image+'">';
+					    html+='</div>';
+					    html+='<div class="col-md-6 news-grid-info-bottom">';
+					    html+='<div class="news-left-top-text">';
+					    html+='<a href="#" data-toggle="modal" data-target="#myModal">'+data[i].shopName+'</a>';
+					    html+='</div><div class="date-grid">';
+					    html+='<div class="admin">';
+					    html+='<a href="#"><i class="fa fa-user" aria-hidden="true"></i>   电话： '+data[i].phone+'</a>';
+					    html+='</div><br>';
+					    html+='<div class="admin">';
+					    html+='<p><i class="fa fa-calendar" aria-hidden="true"></i>   营业时间： '+data[i].opentime+'</p>';
+					    html+='</div><div class="clearfix"> </div></div>';
+					    html+='<div class="news-grid-info-bottom-text">';
+					    html+='<p>'+data[i].address+'</p>';
+					    html+='</div></div><div class="clearfix"> </div></div> ';
+						$("#shoplist").append(html);
+
+						}
+
+				},
+				error : function(data) {// eslint-disable-line no-unused-vars
+					/* alert("登录失败，手机号或密码错误");
+					window.location.reload(); */
+				}
+			});
+	 }
+
+	 function ShopDetail(shopId)
+	 {
+		 window.location.href="shopDetail.html?shopId="+shopId;
+
+
+	 }
+	</script>
+	<!-- 右下角返回顶部的小按钮 -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+	<!-- //here ends scrolling icon -->
+	<!-- Tabs-JavaScript -->
+	<script src="js/owl.carousel.js"></script>
+</body>
+</html>
